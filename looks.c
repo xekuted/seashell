@@ -164,14 +164,14 @@ void print_banner(void)
         else if (i == WORD_ROWS)
             printf(CREAM "────────────────── v0.1.0 ──────────────────" RESET);
         else if (i == WORD_ROWS + 1)
-            printf(ITALIC CREAM "            A shell of your own." RESET);
+            printf(ITALIC CREAM "            A shell of your own" RESET);
 
         printf("\n");
     }
 
     printf("\n");
     printf("  " TURQUOISE "≈≈" RESET " Welcome to " BOLD ORANGE "SeaShell " RESET TURQUOISE "≈≈" RESET "\n");
-    printf("  " RESET " Type 'help' to see available commands.\n");
+    printf("  " RESET "Type 'help' to see available commands.\n");
     printf("\n");
 }
 
@@ -194,7 +194,7 @@ void display_prompt(void)
     if (getcwd(cwd, sizeof(cwd)) == NULL)
         strcpy(cwd, "?");
 
-    printf("%s%s@%s%s\n", GREEN, username, hostname, RESET);
+    printf("~ %s%s@%s%s\n", GREEN, username, hostname, RESET);
 
     if (home != NULL &&
         strncmp(cwd, home, strlen(home)) == 0 &&
