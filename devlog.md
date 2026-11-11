@@ -41,3 +41,66 @@ fgets basically reads the entire input stream till `[sizeofinput-1]` and then st
 ### 12:42 p.m.
 
 Finally done with the basic implementation plus implemented an extra check (checking whether an input is empty or not) via `strcspn`. This new function will eventually be used for phase 2 of this shell.
+
+### 1:58 p.m.
+
+Phase 2 is gonna be parsing. The goal is to take commands and parse each command separately.
+
+### 10:22 p.m.
+
+Got busy with some other work and diwali decor, got tokenization working, yet to implement proper parsing. Got to learn about how functions like `strtok` work and finally understood what roles do header files play. Gonna finish parsing now.
+
+### 11:03 p.m.
+
+Got command execution working. Worked with many new libs like `unistd.h`, `sys/types.h` and `sys/wait.h`. Also understood how functions like `fork()`,`execvp()`, `_exit()`,etc work. Lots of learning! Gotta improve the parser now and then work on built-in commands.
+
+## Progress so far
+<ol>
+    <li>Read user input using fgets().</li>
+    <li>Tokenize input using the parser.<li>
+    <li>Create a child process using fork().</li>
+    <li>Execute external programs using execvp().</li>
+    <li>Make the parent wait using waitpid().</li>
+    <li>Handle failed process creation and failed command execution.</li>
+</ol>
+
+### 11:26 p.m.
+
+I've decided to revisit and improve the parser later, as implementing proper parsing is more involved than I initially anticipated.
+
+For now, I'll focus on getting a functional shell running and progressively address edge cases and improve the parser as the project evolves.
+
+Time to work on built-ins!
+
+# 9th November, 2026
+
+### 9:47 p.m.
+
+Couldn't continue with the project yesterday so time to finish it now (hopefully). Gonna implement the following built-ins:
+
+- `cd`
+- `pwd`
+- `exit`
+- `help`
+
+# 10th November, 2026
+
+### 12:15 a.m.
+
+Finished implementing the built-in commands.
+
+# 11th November, 2026
+
+### 12:02 p.m.
+ Improving the parser has got to be the most confusing thing so far, working with pointers and understanding how each command and argument is stored in the memory isn't easy. It's literally the only thing left to improve and only when it's correctly implemented can I work with features like pipes and input/output redirection. A simple program like shell that we use on a daily basis is truly not just "simple". This is the state when I'm just trying to go for a very minimal implementation instead of a proper shell with 1000 other features. Will work on it later.
+
+### 12:07 p.m.
+
+Thinking of working on the looks department of the shell so that at least it looks presentable and feels good to use.
+
+### 12:32 p.m.
+
+Getting to understand header files better and also learnt about makefile. Understood what are the diff kinds of ways to write a header file.
+
+### 1:50 p.m.
+Got done with the looks of the shell and I'm very satisfied with it. Now the only thing remaining is the parser and the redirections.
