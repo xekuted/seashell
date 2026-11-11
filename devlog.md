@@ -57,7 +57,7 @@ Got command execution working. Worked with many new libs like `unistd.h`, `sys/t
 ## Progress so far
 <ol>
     <li>Read user input using fgets().</li>
-    <li>Tokenize input using the parser.<li>
+    <li>Tokenize input using the parser.</li>
     <li>Create a child process using fork().</li>
     <li>Execute external programs using execvp().</li>
     <li>Make the parent wait using waitpid().</li>

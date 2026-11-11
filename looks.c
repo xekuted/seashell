@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include <sys/ioctl.h>
 
 #include "looks.h"
 
@@ -146,52 +145,33 @@ static void print_word_row(int row)
     }
 }
 
-// Width of the terminal in columns (80 if it can't be detected).
-static int term_cols(void)
-{
-    struct winsize ws;
-    if (ioctl(STDOUT_FILENO, TIOCGWINSZ, &ws) == 0 && ws.ws_col > 0)
-        return ws.ws_col;
-    return 80;
-}
-
-// Print spaces so that something `width` columns wide ends up centered.
-static void center_pad(int width)
-{
-    int pad = (term_cols() - width) / 2;
-    for (int i = 0; i < pad; i++)
-        putchar(' ');
-}
-
-// Print SeaShell startup banner: shell on top, title below, both centered.
+// Print SeaShell startup banner: shell on the left, title and text on the right.
 void print_banner(void)
 {
+    // Right-hand side, top to bottom: 4 title rows, version line, tagline.
+    int side_rows = WORD_ROWS + 2;
+    int start = (LOGO_ROWS - side_rows) / 2;    // center the text beside the shell
+
     printf("\n");
 
     for (int r = 0; r < LOGO_ROWS; r++) {
-        center_pad(LOGO_COLS);
         print_logo_row(r);
+        printf("   ");                          // gap between shell and text
+
+        int i = r - start;
+        if (i >= 0 && i < WORD_ROWS)
+            print_word_row(i);
+        else if (i == WORD_ROWS)
+            printf(CREAM "────────────────── v0.1.0 ──────────────────" RESET);
+        else if (i == WORD_ROWS + 1)
+            printf(ITALIC CREAM "            A shell of your own." RESET);
+
         printf("\n");
     }
 
     printf("\n");
-
-    for (int r = 0; r < WORD_ROWS; r++) {
-        center_pad(WORD_COLS);
-        print_word_row(r);
-        printf("\n");
-    }
-
-    center_pad(WORD_COLS);
-    printf(CREAM "────────────────── v0.1.0 ──────────────────" RESET "\n");
-    center_pad(WORD_COLS);
-    printf(ITALIC CREAM "            A shell of your own." RESET "\n");
-
-    printf("\n");
-    center_pad(23);
-    printf(TURQUOISE "≈≈" RESET " Welcome to " BOLD ORANGE "SeaShell " RESET TURQUOISE "≈≈""\n");
-    center_pad(40);
-    printf(RESET " Type 'help' to see available commands.\n");
+    printf("  " TURQUOISE "≈≈" RESET " Welcome to " BOLD ORANGE "SeaShell " RESET TURQUOISE "≈≈" RESET "\n");
+    printf("  " RESET " Type 'help' to see available commands.\n");
     printf("\n");
 }
 
