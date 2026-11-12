@@ -1,4 +1,4 @@
-## 8th November, 2026
+# 8th November, 2026
 
 ### 10:11 a.m.
 
@@ -104,3 +104,12 @@ Getting to understand header files better and also learnt about makefile. Unders
 
 ### 1:50 p.m.
 Got done with the looks of the shell and I'm very satisfied with it. Now the only thing remaining is the parser and the redirections.
+
+# 12th November, 2026
+
+### 9:00 p.m.
+
+Gonna start with the parser (again) and hopefully get it working properly within the next hour.
+
+### 10:22 p.m.
+Got done with the parser. For some reason I was able to just "do it", turns out i don't need to take every concept way too seriously if I don't get it, I can just understand enough to be able to work with it and then understand it deeply over time. I think only input/output redirection remains atp and seashell will finally be ready!

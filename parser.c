@@ -14,4 +14,11 @@ void parser(char cmd[], char *argv[]){
     }
 
     argv[count] = NULL; // execvp() expects argv to end with NULL.This tells it where the argument list finishes.
+
+    for(int i=0;i<count;i++){
+        if(strcmp(argv[i], ";") == 0){
+            argv[i]=NULL;
+        }
+
+    }
 }
